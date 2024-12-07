@@ -1,0 +1,117 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+:root {
+    --dark-grey: #1b1b32;
+    --light-grey: #f5f6f7;
+    --black: #000;
+    --light-black: #403d39;
+    --white: #fff;
+    --grey: #3b3b4f;
+    --golden-yellow: #fecc4c;
+    --yellow: #ffcc4c;
+    --gold: #feac32;
+    --orange: #ffac33;
+    --dark-orange: #f89808;
+  }
+  
+  body {
+    background-color: var(--dark-grey);
+  }
+  
+  .title {
+    text-align: center;
+    margin: 25px 0;
+    color: var(--light-grey);
+  }
+
+  .container {
+    width: 400px;
+    height: 500px;
+    background-color: var(--grey);
+    border-radius: 10px;
+    margin: 0 auto;
+    box-shadow: #f5f6f7 -2px 2px 5px;
+    padding: 10px;
+  }
+
+  .display {
+    width: 100%;
+    height: 100px;
+    background-color: var(--white);
+    border-radius: 10px;
+    color: var(--black);
+    padding: 20px;
+  }
+
+  .display-number {
+    font-size: 2.5rem;
+    text-align: right;
+  }
+  
+  .buttons-container {
+    display: flex;
+    padding: 5px;
+    background-color: var(--light-grey);
+    width: 100%;
+    height: 350px;
+    margin-top: 30px;
+  }
+
+  #buttons-container-number,
+  #buttons-container-operator {
+    display: grid;
+    grid-template-rows: repeat(4, 1fr);
+    grid-gap: 3px;
+  }
+
+  #buttons-container-number {
+    width: 219px;
+    height: 340px;
+    margin-right: 6px;
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+
+  #buttons-container-operator {
+    width: 145px;
+    height: 340px;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .btn-num,
+  .btn-operator {
+    cursor: pointer;
+    color: var(--white);
+    border-radius: 5px;
+    font-size: 1.5rem;
+    border: none;
+  }
+
+  .btn-num {
+    background-color: var(--grey);
+    background-image: linear-gradient(#3b3b4f,#1c2541);
+  }
+  .btn-num:hover {
+    background-image: linear-gradient(#43434e,#323e63);
+  }
+
+  .btn-operator {
+    background-color: var(--dark-grey);
+    background-image: linear-gradient(#1b1b32, #0b132b);
+  }
+
+  .btn-operator:hover {
+    background-image: linear-gradient(#2b2d42, #1a1d33);
+  }
+
+  #buttons-container-number button:nth-last-child(2) {
+    grid-column: span 2;
+  }
+
+  #buttons-container-operator button:nth-child(2):hover {
+    background-image: linear-gradient(#bd5e3c, #e74f4f);
+  }
