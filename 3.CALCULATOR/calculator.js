@@ -43,24 +43,25 @@ let operator = null; // Оператор
 
 // Функция обновления дисплея
 const updateDisplay = () => {
-  displayNumber.textContent = currentInput || "0";
-  console.log('update')
+  displayNumber.textContent = currentInput.length > 10
+    ? parseFloat(currentInput).toExponential(5)
+    : currentInput || "0";
 };
 
 const addNumbers = document.getElementsByClassName("btn-num");
 [...addNumbers].forEach(
   (button) => (button.onclick = () => {
+    // Обработка десятичного разделителя
     if (button.textContent === "." && currentInput.includes(".")) return;
     currentInput = currentInput === "0"? button.textContent : currentInput + button.textContent;
     displayNumber.textContent = currentInput;
+    console.log(currentInput)
   })
 )
 
 const addOperator = document.getElementsByClassName("btn-operator");
 [...addOperator].forEach(
   (button) => (button.onclick = () => {
-    //currentNumber = currentNumber === "0"? button.textContent : currentNumber + button.textContent;
-    //displayNumber.textContent = currentNumber;
     
     // Вычисление
     if (button.classList.contains("equal")) {
@@ -89,7 +90,18 @@ const addOperator = document.getElementsByClassName("btn-operator");
       return;
   })
 )
+ // currentInput, previousInput дожны иметь 10цифр, чтобы поместится на экране
+     // to do
+/*
+Пример: вы вводите число ( 12), затем нажимаете кнопку оператора ( +), 
+вторую кнопку числа ( 7) и вторую кнопку оператора ( -). Затем ваш калькулятор 
+должен выполнить следующее: сначала оценить начальную пару чисел ( 12 + 7), затем 
+отобразить результат этого вычисления ( 19). Наконец, использовать этот результат ( 19) как первое число в новом вычислении вместе со следующим оператором ( -).
+*/
+  //to do
 
+  // что лелать, если введены два оператора
+  
 // Функция вычисления
 const calculate = () => {
   if (!previousInput || !currentInput || !operator) return;
@@ -111,6 +123,18 @@ const calculate = () => {
       break;
     case "/":
       currentInput = curr !== 0 ? prev / curr : "Error";
+      break;
+    case "AC":
+      currentInput = "";
+      previousInput = "";
+      operator = null;
+      updateDisplay();
+      break;
+    case "+/-":
+      //curr * -1;
+      break;
+    case "->":
+      // the user can undo their last input if they click the wrong number.
       break;
     default:
       return;
